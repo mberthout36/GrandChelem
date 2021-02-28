@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Grand Chelem Experience</title>
+    <link type="text/css" rel="stylesheet" href="css/stylesheet.css">
+</head>
+<body>
+    <div class="banner">
+        <a href="/">Grand Chelem Experience</a>
+    </div>
+
+    <div class="container tournament">
+        <div class="title" th:text="${tournament.name}"></div>
+        <div class="mainInfo">
+            <div th:text="'Location : ' + ${tournament.country}"></div>
+            <div> - </div>
+            <div th:text="'Surface : ' + ${tournament.surface}"></div>
+        </div>
+
+        <div class="form">
+            <form action="/tournament" method="get">
+                <input type="hidden" name="id" th:value="${tournament.id}"/>
+                <label for="year">Year : </label>
+                <input type="text" id="year" name="year" th:value="${tournament.edition.year}"/>
+                <input type="submit" value="Search"/>
+            </form>
+        </div>
+
+        <div class="formResult">
+            <div th:text="${tournament.edition.label}"></div>
+            <div class="categories">
+                <div th:each="winner : ${tournament.edition.winners}">
+                    <div th:text="${winner.categoryLabel} + ' : '"></div>
+                    <div th:each="player : ${winner.players}">
+                        <a th:href="@{/player(id=${player.id})}" th:text="${player.name}"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

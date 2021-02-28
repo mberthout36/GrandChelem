@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Grand Chelem Experience</title>
+    <link type="text/css" rel="stylesheet" href="css/stylesheet.css">
+</head>
+<body>
+    <div class="banner">
+        <a href="/">Grand Chelem Experience</a>
+    </div>
+
+    <div class="container">
+        <div class="title" th:text="${player.name}"></div>
+        <div class="mainInfo">
+            <div th:text="'Sex : ' + ${player.sex}"></div>
+            <div> - </div>
+            <div th:text="'Country : ' + ${player.country}"></div>
+        </div>
+        <div class="playingStyle">
+            <div>Playing Style :</div>
+            <div th:text="${player.mainHand}"></div>
+            <div th:each="ps : ${player.playStyle}" th:text="${ps}"></div>
+        </div>
+    </div>
+</body>
+</html>

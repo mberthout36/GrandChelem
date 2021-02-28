@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Grand Chelem Experience</title>
+    <link type="text/css" rel="stylesheet" href="css/stylesheet.css">
+</head>
+<body>
+    <div class="banner">
+        <a href="/">Grand Chelem Experience</a>
+    </div>
+
+    <div class="container">
+        <div class="chelemSelect">
+<!--            <div th:each="t : ${tournaments}">-->
+                <a th:each="t : ${tournaments}" th:href="@{/tournament(id=${t.id})}" th:text="${t.name}"></a>
+<!--            </div>-->
+        </div>
+    </div>
+</body>
+</html>
